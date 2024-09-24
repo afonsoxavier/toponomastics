@@ -83,7 +83,7 @@ toponimos <- bind_rows(comarcas,concelhos,parroquias,lugares)
 
 
 
-# DATA SEARCH
+# FUNCTIONS
 
 # Função de pesquisa
 # tema = REGEX ou topónimo a pesquisar; tipo_entidade = lugar, parroquia ou concelho (opcional)
@@ -102,7 +102,7 @@ search_data <- function(tema,tipo_entidade=NULL) {
 }
 
 
-# FUNCTIONS
+
 
 # Função para evitar que o topónimo se repita em vários níveis de tipo de entidade num mesmo espaço
 
@@ -242,7 +242,7 @@ full_report <-function(tema, tipo_entidade=NULL){
 }
 
 
-# DATA SELECTION
+# EXPLORATORY ANALYSIS
 
 # Exemplo -iz e -is
 
