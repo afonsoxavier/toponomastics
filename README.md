@@ -8,9 +8,12 @@ visor_toponomastics_functions.R
 Updates visotr_toponomastics.R. Data is now automatically downloaded (requires web access) for the given example. Code is now easier to follow as repetitive processes are now functions. 
 New script that includes all the processes already used in visor_toponomastics.R plus new functions and examples of exploratory analysis of the data. 
 
-Requires: dplyr for easier dataframe manipulation and sf for shape files
+Requires:
+dplyr for easier dataframe manipulation
+sf for shape files
 
-Description of the script:
+
+Description
 
 DATA LOAD
 The data is now loaded automatically from the script (zip files unzipped and stored on user's folder)
