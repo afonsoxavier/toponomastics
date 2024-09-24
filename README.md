@@ -16,17 +16,23 @@ sf for shape files
 Description
 
 DATA LOAD
-The data is now loaded automatically from the script (zip files unzipped and stored on user's folder)
+
+Databases are now loaded automatically from the script (zip files unzipped and stored on user's folder)
+
 
 DATA SELECTION
-Selects the dataframes that are relevant for toponymic research from the data loaded
+
+Selects dataframes that are relevant for toponymic research from the data loaded
+
 
 DATA CLEANING
+
 Groups the data from shapefiles in a dataframe and processes the most relevant variables to create columns that contain the most relevant values
 
 FUNCTIONS 
+
 data_search
-Searches a given theme or toponym. It allows searches for a specific entity type (point or polygon).
+searches a given theme or toponym. It allows searches for a specific entity type (point or polygon).
 
 unique_toponym
 Processes a given search to avoid reduplication of toponymic expressions when they originally belong to the same place (E.g. a place name of a particular village which is also used to name a whole parish or a municipality).
@@ -43,7 +49,7 @@ creates a list of toponyms for a given theme
 full_report
 Searches a theme in the database, creates a list of place-names that contain the them and plots a map with the results. It allows entity_type specification (optional)
 
-DATA SELECTION
+EXPLORATORY ANALYSIS
 
-How to use the functions (examples)
+How to use (examples)
 
