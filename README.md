@@ -8,7 +8,7 @@ visor_toponomastics_functions.R (deprecated)
 Updated visor_toponomastics.R. Databases automatically loaded (requires web access) for the given examples. Code is now easier to follow as repetitive processes are now functions. 
 New script that includes all the processes already used in visor_toponomastics.R plus new functions and examples of exploratory analysis of the data. There is now a new script, 
 
-visor_toponomastics_main.R replaces visor_toponomastics_functions.R as functions are now split in different files for better development and clarity of the maain script.
+visor_toponomastics_main.R replaces visor_toponomastics_functions.R as functions are now split in different files for better development and clarity of the main script.
 Functions are now in independent files: load_data_gz.R to load data for a specific area, map_functions.R for maps, report_functions.R for reports and search_functions.R for searches.
 
 Requires:
