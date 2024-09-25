@@ -48,7 +48,7 @@ creates a map comparing two themes
 creates a list of toponyms for a given theme
 
 *full_report*
-Searches a theme in the database, creates a list of place-names that contain the them and plots a map with the results. It allows entity_type specification (optional)
+searches a theme in the database, creates a list of place-names that contain the them and plots a map with the results. It allows entity_type specification (optional)
 
 EXPLORATORY ANALYSIS
 
