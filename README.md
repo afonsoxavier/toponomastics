@@ -12,8 +12,7 @@ New script that includes all the processes already used in visor_toponomastics.R
 Functions are now in independent files: load_data_gz.R to load data for a specific area, map_functions.R for maps, report_functions.R for reports and search_functions.R for searches.
 
 Requires:
-dplyr for easier dataframe manipulation
-sf for shape files
+*dplyr* for easier dataframe manipulation and *sf* for shape files
 
 **Description of visor_toponomastics_main.R**
 
