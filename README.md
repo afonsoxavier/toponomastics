@@ -15,7 +15,7 @@ Requires:
 dplyr for easier dataframe manipulation
 sf for shape files
 
-Description of visor_toponomastics_main.R
+**Description of visor_toponomastics_main.R**
 
 DATA LOAD
 
@@ -33,22 +33,22 @@ Groups the data from shapefiles in a dataframe and processes the most relevant v
 
 FUNCTIONS 
 
-data_search
+*data_search*
 searches a given theme or toponym. It allows searches for a specific entity type (point or polygon).
 
-unique_toponym
-Processes a given search to avoid reduplication of toponymic expressions when they originally belong to the same place (E.g. a place name of a particular village which is also used to name a whole parish or a municipality).
+*unique_toponym*
+processes a given search to avoid reduplication of toponymic expressions when they originally belong to the same place (E.g. a place name of a particular village which is also used to name a whole parish or a municipality).
 
-map_galiza
+*map_galiza*
 creates a map plotting a given theme with all occurrences found for the area of the data used in the study (Galiza)
 
-map_galiza2
+*map_galiza2*
 creates a map comparing two themes 
 
-list_toponimos
+*list_toponimos*
 creates a list of toponyms for a given theme
 
-full_report
+*full_report*
 Searches a theme in the database, creates a list of place-names that contain the them and plots a map with the results. It allows entity_type specification (optional)
 
 EXPLORATORY ANALYSIS
