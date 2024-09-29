@@ -113,6 +113,14 @@ map_galiza2(unicos_mir, unicos_mil, "-mir", "-mil")  # comparamos mir e mil no m
 variantes_ufe<- c("ufe$", "ulfe$", "ofe$", "ofre$", "olfe$", "olfre$", "ufre$", "orfe$", "urfe$")
 sapply (variantes_ufe, full_report)
 
+unicos_ufe<-unique_toponym(search_data("ufe$"))  # Evita as entidades superiores em que o mesmo topónimo a diferentes tipos de entidade (ex. lugar e ao mesmo tempo parróquia e/ou concelho)
+unicos_ulfe<-unique_toponym(search_data("ulfe$"))
+map_galiza(unicos_ufe) # representamos só os acabados em ufe
+map_galiza2(unicos_ufe, unicos_ulfe, "-ufe", "-ulfe")  # comparamos ufe e ulfe no mapa
+
+barplot_freq(unicos_ufe)
+barplot_freq(unicos_ulfe)
+
 
 # -mar -tar - zar -sar
 # modo alternativo de pesquisa

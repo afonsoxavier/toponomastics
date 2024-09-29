@@ -15,6 +15,17 @@ list_toponimos <-function(search_toponimos){
 }
 
 
+# Prints a graph with the frequencies
+
+barplot_freq <-function(list_toponimos_tema){
+ggplot(list_toponimos_tema, aes(y = toponimo)) +
+  geom_bar() +
+  labs(title = "Frequência dos diferentes topónimos",
+       x = "Frequência",
+       y = "Topónimos")
+
+}
+
 # UTILS
 
 # Função para o estudo dum topónimo completo
@@ -28,7 +39,9 @@ full_report <-function(tema, tipo_entidade=NULL){
 
   if (nrow(toponimos_tema)>0){
     map_galiza(toponimos_tema)
+
     list_toponimos(toponimos_tema)
+
     return(toponimos_tema)
   } else {
     if(is.null(tipo_entidade)){
