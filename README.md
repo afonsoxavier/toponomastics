@@ -37,6 +37,9 @@ searches a given theme or toponym. It allows searches for a specific entity type
 *unique_toponym*
 processes a given search to avoid reduplication of toponymic expressions when they originally belong to the same place (E.g. a place name of a particular village which is also used to name a whole parish or a municipality).
 
+*barplot_freq* 
+plots a bar chart to compare the frequencies of toponyms for a given theme
+
 *map_galiza*
 creates a map plotting a given theme with all occurrences found for the area of the data used in the study (Galiza)
 
