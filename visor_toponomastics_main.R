@@ -11,54 +11,32 @@ library(dplyr)
 
 # READ RAW DATA
 
-# Lemos o ficheiro co pacote sf
-# Info: https://r-spatial.org/book/07-Introsf.html
+source("read_data_functions.R")   # function to create sf objects from loaded data
 
+#Seleciona e carrega os dados do visor PBA como objetos geográficos sf, renomea as colunas de variáveis coincidentes para melhorar a operatividade e evitar multiplicação de NAs numa dataframe única de topónimos
 
-lugares <- st_read("galiza_shape_file/_01MAS_202212_AsentamentosPBA.shp")
+db_visorpba<-read_data_visor_gz()
 
-concelhos <- read_sf("Concellos_IGN/Concellos_IGN.shp") # uma fila por concelho geo e áreas
-concelhos_lindes <- read_sf("Concellos_IGN/Concellos_IGN_linea.shp")  # dados geo e linhas lindes
+lugares <-db_visorpba[[1]]
+parroquias <-db_visorpba[[2]]
+parroquias_lindes <-db_visorpba[[3]]
+concelhos <- db_visorpba[[4]]
+concelhos_lindes <- db_visorpba[[5]]
+comarcas <- db_visorpba[[6]]
+comarcas_lindes <- db_visorpba[[7]]
 
+#Crea uma dataframe com todos os topónimos, reorganiza as colunas e seleciona as relevantes
 
-comarcas <- read_sf("Comarcas/Comarcas.shp")   # uma linha por comarca e áreas
-comarcas_lindes <- read_sf("Comarcas/Comarcas_linea.shp")  # linhas lindes
+toponimos <- db_visorpba[[8]]
 
-
-parroquias <- read_sf("Parroquias/Parroquias.shp")   # uma linha por comarca e áreas
-parroquias_lindes <- read_sf("Parroquias/Parroquias_linea.shp")  # linhas lindes
-
-
-# DATA PREPARATION
-
-#Creamos uma columna co topónimo e o tipo de entidade, reordenamos por orde alfabética do topónimo e combinamos as dataframes com as columnas relevantes
-
-lugares <- mutate(lugares, tipo = "lugar")
-lugares <- rename(lugares, CODCONC=COD_CONCEL, CODPARRO=COD_ENT_CO, PART_OF=ENTIDAD_CO, toponimo= NOME_LUGAR)
-lugares <-arrange(lugares,toponimo)
-
-#No caso das parroquias, para o topónimo suprimimos o patrão ou patroa entre paréntese
-parroquias <- parroquias %>% mutate(parroquias, toponimo =  gsub(" \\(.*?\\)", "", PARROQUIA), tipo = "parroquia")
-parroquias <-arrange(parroquias, toponimo)
-
-concelhos <- mutate(concelhos, tipo = "concelho")
-concelhos <- rename(concelhos, toponimo= CONCELLO, Provincia=PROVINCIA)
-concelhos <-arrange(concelhos, toponimo)
-
-comarcas <- mutate(comarcas, tipo = "comarca")
-comarcas <- rename(comarcas, toponimo= Comarca)
-
-toponimos <- bind_rows(comarcas,concelhos,parroquias,lugares)
-
-toponimos <- toponimos[,c(3,9,8,6,7,30,25,26,27,28,29,31,32,22,20,21,23,1,2,4)]
 
 #SEARCH AND REPORT FUNCTIONS
 
 #source("toponomastics_functions.R")  # All functions in a file (will be deprecated)
 
-source("search_functions.R")
-source("map_functions.R")
-source("report_functions.R")
+source("search_functions.R")   # funções de pesquisa
+source("map_functions.R")  # funções de cartografia
+source("report_functions.R") # funções de listagens e informes
 
 
 # EXPLORATORY ANALYSIS
@@ -78,8 +56,8 @@ full_report ("iz$") # pesquisa, cria listagem e mapa de todos os topónimos sem 
 #Procuramos topónimos especificando o tipo de entidade
 
 lugares_is_atono <- search_data("is$", "lugar") # pesquisa lugares acabados em -is átono
-lugares_is <- search_data("ís$", "lugar")
-lugares_iz <- search_data("ís$", "lugar")
+lugares_is <- search_data("ís$", "lugar") #pesquisa lugares acabados em -is tónico
+lugares_iz <- search_data("iz$", "lugar") #pesquisa lugares acabados em -iz
 
 list_toponimos(lugares_is_atono)
 list_toponimos(lugares_is)
@@ -103,7 +81,7 @@ list_toponimos(unicos_is)
 #A representação é mais clara se se seleciona previamente o tipo de entidade
 
 map_galiza(lugares_iz) # representamos só os acabados em iz  sem eliminar entidades superiores que coocorren
-map_galiza(lugares_is) # representamos só os acabados em iz sem eliminar entidades superiores que coocorren
+map_galiza(lugares_is) # representamos só os acabados em is sem eliminar entidades superiores que coocorren
 map_galiza2(lugares_iz, lugares_is, "iz", "ís")  # comparamos is e iz no mapa sem eliminar entidades superiores que coocorren
 
 # ou se filtram as entidades maiores quando já existe uma menor co mesmo topónimo
