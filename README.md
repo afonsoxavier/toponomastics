@@ -1,14 +1,7 @@
 # toponomastics
 Functions and scripts to research geographic data for the study of names
 
-**visor_toponomastics.R** (deprecated)
-visotr_toponomastics.R is an initial script for exploratory analysis. It allows searches of place-names for a given dataset (specifications in the script comments) and gives examples of searches, lists and maps. However all the processes and more are contained in the most recent visor_toponmastics_functions.R which improves the code (with specific functions) and all the aspects data processing. Although deprecated, it is left here because it has examples of how to perform searchs and create maps for more specific local areas.
-
-**visor_toponomastics_functions.R** (deprecated)
-Updated visor_toponomastics.R. Databases automatically loaded (requires web access) for the given examples. Code is now easier to follow as repetitive processes are now functions. 
-New script that includes all the processes already used in visor_toponomastics.R plus new functions and examples of exploratory analysis of the data. There is now a new script, 
-
-**visor_toponomastics_main.R** replaces visor_toponomastics_functions.R as functions are now split in different files for better development and clarity of the main script.
+**visor_toponomastics_main.R** replaces visor_toponomastics_functions.R. 
 Functions are now in independent files: load_data_gz.R to load data for a specific area, map_functions.R for maps, report_functions.R for reports and search_functions.R for searches.
 
 Requires:
@@ -32,6 +25,12 @@ Groups the data from shapefiles in a dataframe and processes the most relevant v
 
 FUNCTIONS 
 
+*load_data_gz*
+Downloads data for the examples. Uncomment the line in load_data_gz.R to download the files and create the folders. Comment again to avoid downloading again.
+
+*read_data_functions*
+organizes the databases of the examples for better performance and creates a geographical object for each place name
+
 *data_search*
 searches a given theme or toponym. It allows searches for a specific entity type (point or polygon).
 
@@ -53,4 +52,10 @@ searches a theme in the database, creates a list of place-names that contain the
 EXPLORATORY ANALYSIS
 
 How to use (examples)
+
+
+**Previous scripts**
+*visor_toponomastics.R* (deprecated) visor_toponomastics.R is an initial script for exploratory analysis. It allows searches of place-names for a given dataset (specifications in the script comments) and gives examples of searches, lists and maps. However all the processes and more are contained in the most recent visor_toponmastics_functions.R which improves the code (with specific functions) and all the aspects data processing. Although deprecated, it is left here because it has examples of how to perform searchs and create maps for more specific local areas.
+
+visor_toponomastics_functions.R (deprecated) Updated visor_toponomastics.R. Databases automatically loaded (requires web access) for the given examples. Code is now easier to follow as repetitive processes are now functions. New script that includes all the processes already used in visor_toponomastics.R plus new functions and examples of exploratory analysis of the data. There is now a new script,
 
