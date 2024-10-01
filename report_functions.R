@@ -18,13 +18,20 @@ list_toponimos <-function(search_toponimos){
 # Prints a graph with the frequencies
 
 barplot_freq <-function(list_toponimos_tema){
-ggplot(list_toponimos_tema, aes(y = toponimo)) +
-  geom_bar() +
+
+freqs_df <- data.frame(sort(table(list_toponimos_tema$toponimo), TRUE))
+
+ggplot(freqs_df, aes(y = reorder(Var1, -Freq), x = Freq)) +
+  geom_bar(stat = "identity") +
   labs(title = "Frequência dos diferentes topónimos",
        x = "Frequência",
-       y = "Topónimos")
+       y = "Topónimos") +
+  theme_bw()
 
 }
+
+
+
 
 # UTILS
 

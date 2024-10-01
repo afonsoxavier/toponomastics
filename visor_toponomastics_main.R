@@ -100,7 +100,7 @@ list_toponimos(toponimos_mir)
 list_toponimos(toponimos_mil)
 map_galiza(toponimos_mir) # representamos só os acabados em mir
 map_galiza2(toponimos_mir, toponimos_mil, "-mir", "-mil")  # comparamos mir e mil no mapa
-
+barplot_freq(toponimos_mil)
 
 #Todos os tipos de entidades filtrando as coocorrentes superiores
 unicos_mir<-unique_toponym(toponimos_mir)
@@ -121,6 +121,7 @@ map_galiza2(unicos_ufe, unicos_ulfe, "-ufe", "-ulfe")  # comparamos ufe e ulfe n
 
 barplot_freq(unicos_ufe)
 barplot_freq(unicos_ulfe)
+barplot_freq(toponimos_mil)
 
 
 # -mar -tar - zar -sar
