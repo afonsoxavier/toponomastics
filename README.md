@@ -58,14 +58,19 @@ DATA SELECTION & DATA CLEANING
 Next, the script selects dataframes that are relevant for toponymic research from the data loaded and groups the data from shapefiles in a dataframe and processes the most relevant variables to create columns that contain the most relevant values
 
 EXPLORATORY ANALYISIS
+
 The rest of the script shows examples on how to explore themes in the databases
 
 
+
 **experiment_maps.R**
+
 Examples for maps
 
 **visor_toponmastics_particular_area**
+
 Examples with area restriction
+
 
 
 **Previous scripts**
