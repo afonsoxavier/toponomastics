@@ -1,10 +1,12 @@
 #install the packages
 #install.packages("sf)
 # install.packages("dplyr")
+#install.packages("ggrepel")
 
 library(sf)
 library(dplyr)
 library(ggplot2)
+library(ggrepel)
 
 #LOAD DATA
 
@@ -20,15 +22,12 @@ db_visorpba<-read_data_visor_gz()
 
 lugares <-db_visorpba[[1]]
 parroquias <-db_visorpba[[2]]
-parroquias_lindes <-db_visorpba[[3]]
-concelhos <- db_visorpba[[4]]
-concelhos_lindes <- db_visorpba[[5]]
-comarcas <- db_visorpba[[6]]
-comarcas_lindes <- db_visorpba[[7]]
+concelhos <- db_visorpba[[3]]
+comarcas <- db_visorpba[[4]]
 
 #Crea uma dataframe com todos os topónimos, reorganiza as colunas e seleciona as relevantes
 
-toponimos <- db_visorpba[[8]]
+toponimos <- db_visorpba[[5]]
 
 
 #SEARCH AND REPORT FUNCTIONS
@@ -100,14 +99,14 @@ list_toponimos(toponimos_mir)
 list_toponimos(toponimos_mil)
 map_galiza(toponimos_mir) # representamos só os acabados em mir
 map_galiza2(toponimos_mir, toponimos_mil, "-mir", "-mil")  # comparamos mir e mil no mapa
-barplot_freq(toponimos_mil)
+
 
 #Todos os tipos de entidades filtrando as coocorrentes superiores
 unicos_mir<-unique_toponym(toponimos_mir)
 unicos_mil<-unique_toponym(toponimos_mil)
 map_galiza(unicos_mir) # representamos só os acabados em mir
 map_galiza2(unicos_mir, unicos_mil, "-mir", "-mil")  # comparamos mir e mil no mapa
-
+barplot_freq(unicos_mil)
 
 # -ufe
 

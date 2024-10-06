@@ -66,11 +66,11 @@ unique_toponym <- function(df_toponimos) {
 
     } else if (df_toponimos$tipo[i] == "parroquia") {
       nome_parroquia <- df_toponimos$toponimo[i]
-      nome_parroquia_completo <- df_toponimos$PARROQUIA[i]
+      #nome_parroquia_completo <- df_toponimos$PARROQUIA[i]
       nome_concelho <- df_toponimos$CONCELLO[i]
 
 
-      check_place3 <- filter(df_toponimos, toponimo == nome_parroquia & tipo == "lugar" & PART_OF == nome_parroquia_completo & CONCELLO == nome_concelho)
+      check_place3 <- filter(df_toponimos, toponimo == nome_parroquia & tipo == "lugar" & PART_OF == nome_parroquia & CONCELLO == nome_concelho)
       if (nrow(check_place3)>0){
         for (x in 1:nrow(check_place3)){
           cat(df_toponimos$toponimo[i], " (", df_toponimos$tipo[i], ") ", "existe também como lugar co topónimo ",  check_place3$toponimo[x], " pertencente a ", check_place3$PART_OF," do concello ", check_place3$CONCELLO, "\n")
@@ -95,3 +95,34 @@ unique_toponym <- function(df_toponimos) {
   }
 }
 
+
+# Função para pesquisar as entidades duma ou mais comarcas
+
+search_comarca <- function(list_concelhos_comarcas_selecionadas){
+
+  #Capturamos os lugares, paróquias e concelhos das comarcas selecionadas
+  #Requer que estejam carregadas no script principal as dataframes de lugares, parroquias, concelhos e comarcas
+
+  #lugares
+  #NOR_Sant_lugares <- lugares %>% filter(grepl(paste(list_concelhos_comarcas_selecionadas, collapse="|"), CONCELLO))
+
+  lugares_area <-lugares[lugares$CONCELLO %in% list_concelhos_comarcas_selecionadas, ]
+
+  #Freguesias (parróquias)
+  # A df de parróquias tem o nome do concelho com maiúscula
+
+  list_concelhos_comarcas_selecionadas_MAI <- toupper(list_concelhos_comarcas_selecionadas)
+
+  parroquias_area <-parroquias[parroquias$PART_OF %in% list_concelhos_comarcas_selecionadas_MAI, ]
+
+  # Concelhos
+
+  #concelhos_area <- concelhos %>% filter(grepl(paste(list_concelhos_comarcas_selecionadas, collapse="|"), toponimo))
+  concelhos_area <-concelhos[concelhos$toponimo %in% list_concelhos_comarcas_selecionadas, ]
+
+  #Df com todos os dados para a área
+
+  toponimos_area <- bind_rows(lugares_area,parroquias_area,concelhos_area)
+  return(list(lugares_area, parroquias_area, concelhos_area, toponimos_area))
+
+}
