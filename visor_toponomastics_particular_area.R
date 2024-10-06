@@ -74,7 +74,7 @@ toponimos_mir_NOR_Sant_area <- unique_toponym(NOR_Sant_toponimos[grep("mir$", NO
 toponimos_mil_NOR_Sant_area <- unique_toponym(NOR_Sant_toponimos[grep("mil$", NOR_Sant_toponimos$toponimo), ])
 length_mir_mil_NOR <- length(toponimos_mir_NOR_Sant_area$toponimo) + length(toponimos_mil_NOR_Sant_area$toponimo) #número de topónimos encontrados
 
-lugares_mir_berg_area2 <- berg_toponimos[grep("mir$", berg_toponimos$toponimo), ]
+
 #Map Final
 ggplot(data=NOR_Sant_comarcas) + geom_sf()+  xlab("") + ylab("")+
   geom_sf(data=toponimos_mir_NOR_Sant_area) +
