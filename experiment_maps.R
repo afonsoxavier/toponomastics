@@ -44,6 +44,9 @@ unicos_ulfe<-unique_toponym(search_data("ulfe$"))
 map_galiza(unicos_ufe, "ufe") # representamos só os acabados em ufe
 map_galiza2(unicos_ufe, unicos_ulfe, "-ufe", "-ulfe")  # comparamos ufe e ulfe no mapa
 
+map_gg(unicos_ufe) # Usa ggplot2
+map_gg2(unicos_ufe, unicos_ulfe, "-ufe", "-ulfe")
+
 #Map1 Comarcas de Galiza
 ggplot(data = comarcas) +
   geom_sf() +
@@ -115,7 +118,7 @@ NOR_Sant_toponimos <- bind_rows(NOR_Sant_lugares,NOR_Sant_parroquias,NOR_Sant_co
 
 #Map1 ggplot2 Comarcas
 
-ggplot(data=NOR_Sant_area) + geom_sf()
+map_gg(comarcas)
 
 #Map2 ggplot3 concelhos
 
@@ -123,8 +126,9 @@ ggplot(data=NOR_Sant_concelhos) + geom_sf()
 
 #Map3 parróquias área NO Santiago
 
-ggplot(data=NOR_Sant_parroquias) + geom_sf()
+ggplot(data=NOR_Sant_parroquias) + geom_sf() #só a área
 
+map_gg(NOR_Sant_parroquias)  #na Galiza
 
 #Map4 Comarcas de Galiza
 ggplot(data = comarcas) +

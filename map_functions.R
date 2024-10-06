@@ -27,14 +27,28 @@ map_galiza2 <- function (lugares1, lugares2, label1, label2) {
   legend("topleft", legend = c(label1, label2), col = c("red", "black"), pch = c(17,16), title = title_text, bty="n")
 }
 
-map_galiza_new <-function(lugares, tema=NULL) {
+map_gg <-function(lugares, tema=NULL) {
 
   ggplot(data = comarcas) + geom_sf() +  geom_sf(data = lugares)
 
 }
 
-map_galiza_new2 <-function(lugares1, lugares2) {
+map_gg2 <-function(lugares1, lugares2, tema1, tema2) {
 
-  ggplot(data = comarcas) + geom_sf() +  geom_sf(data = lugares1) + geom_sf(lugares2)
+   ggplot(data = comarcas) + geom_sf() +
+    geom_sf(data = lugares1, color="red", size = 3, show.legend = TRUE)  +
+
+    geom_sf(data=lugares2, color="black", size=3, show.legend = TRUE)
+
+    # + scale_color_identity(name = "Topónimos",  breaks = c("red", "blue"), labels = c(tema1, tema2), guide = "legend") +
+    #theme(legend.position = "top")
 
 }
+
+
+
+
+
+
+
+
