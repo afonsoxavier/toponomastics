@@ -38,7 +38,8 @@ searches a theme in the database, creates a list of place-names that contain the
 
 
 **SCRIPTS**
-Requires:
+
+Require:
 *dplyr* for easier dataframe manipulation, *sf* for shape files, *ggplot2* for graphs and ggrepel to better display placenames in a map
 
 
@@ -68,6 +69,7 @@ Examples with area restriction
 
 
 **Previous scripts**
+
 *visor_toponomastics.R* (deprecated) visor_toponomastics.R was an initial script for exploratory analysis. It allowed searches of place-names for a given dataset (specifications in the script comments) and gave examples of searches, lists and maps. However all the processes and more are contained in the most recent visor_toponmastics_main.R which improves the code (with specific functions) and all the aspects data processing. 
 
 visor_toponomastics_functions.R (deprecated) Updated visor_toponomastics.R. Databases automatically loaded (required web access) for the given examples.
