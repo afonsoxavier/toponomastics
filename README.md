@@ -30,8 +30,14 @@ The same as the previous functions but using ggplot. Still under development. So
 *barplot_freq* 
 plots a bar chart to compare the frequencies of toponyms for a given theme
 
+*barplot_freq_entropy* 
+Plots a bar chart to compare the frequencies of toponyms for a given theme and adds number of toponyms, number of geographical entities and entropy of the thematic system as a subtitle
+
 *list_toponimos*
 creates a list of toponyms for a given theme
+
+*entropy*
+Calculates the entropy for a thematic system (toponyms and associated geographical entities)
 
 *full_report*
 searches a theme in the database, creates a list of place-names that contain the them and plots a map with the results. It allows entity_type specification (optional)
@@ -71,6 +77,9 @@ Examples for maps
 
 Examples with area restriction
 
+**visor_toponmastics_entropy**
+
+Examples for thematic entropy
 
 
 **Previous scripts**
