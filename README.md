@@ -1,4 +1,4 @@
-# toponomastics
+# Toponomastics
 Functions and scripts to research geographic data for the study of names
 
 **FUNCTIONS** 
