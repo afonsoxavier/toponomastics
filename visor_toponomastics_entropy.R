@@ -47,9 +47,11 @@ entropy(unicos_ufe)
 barplot_freq_entropy(unicos_ufe)
 
 # -urfe
-todos_urfe<-search_data("urfe$")
+todos_urfe<-search_data("(o|u)rfe")
 print(todos_urfe)
 entropy(todos_urfe)
 barplot_freq_entropy(todos_urfe)
+
+
 
 

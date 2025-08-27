@@ -5,9 +5,9 @@
 
 search_data <- function(tema,tipo_entidade=NULL) {
   if(is.null(tipo_entidade)){
-    search_toponimos <- toponimos[grep(tema, toponimos$toponimo), ]
+    search_toponimos <- toponimos[grep(tema, toponimos$toponimo, ignore.case=TRUE), ]
   } else {
-    search_toponimos <- toponimos[grep(tema, toponimos$toponimo), ]
+    search_toponimos <- toponimos[grep(tema, toponimos$toponimo, ignore.case=TRUE), ]
     if(tipo_entidade== "lugar" | tipo_entidade == "parroquia" | tipo_entidade == "concelho") {
       search_toponimos <-search_toponimos[search_toponimos$tipo == tipo_entidade, ]
     } else {}

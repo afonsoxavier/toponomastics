@@ -120,7 +120,6 @@ map_galiza2(unicos_ufe, unicos_ulfe, "-ufe", "-ulfe")  # comparamos ufe e ulfe n
 
 barplot_freq(unicos_ufe)
 barplot_freq(unicos_ulfe)
-barplot_freq(toponimos_mil)
 
 
 # -mar -tar - zar -sar
