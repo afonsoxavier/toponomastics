@@ -63,3 +63,53 @@ full_report <-function(tema, tipo_entidade=NULL){
 
 
 }
+
+#ENTROPY
+#Função para o cálculo da entropia dum tema
+entropy <-function(toponyms){
+
+freq_vars<-table(toponyms$toponimo)
+
+names_lexemes<-row.names(freq_vars) # Toponymic expressions
+
+num_vars<-length(freq_vars)  # number of toponyms for the theme
+freq_lex<-sum(freq_vars) # total occurrences of the toponyms with this theme
+list_probs<-as.numeric(vector(mode = "logical",num_vars)) # create a vector for probabilities
+
+
+for (index in 1:num_vars) {
+  probs<-freq_vars[index]/sum(freq_vars) # Probability for each variant
+  cat (paste( index, " ", names_lexemes[index], ":", probs, "\n"))
+  list_probs[index]<-probs
+}
+
+entropy<- -sum(list_probs*log2(list_probs)) # entropy for this theme
+return(entropy)
+}
+
+# Prints a graph with the frequencies and entropy data
+
+barplot_freq_entropy <-function(list_toponimos_tema){
+
+  entropy_value<-entropy(list_toponimos_tema)
+
+  freq_vars<-table(list_toponimos_tema$toponimo)
+
+  names_lexemes<-row.names(freq_vars) # Toponymic expressions
+  num_vars<-length(freq_vars)  # number of toponyms for the theme
+  freq_lex<-sum(freq_vars) # total occurrences of the toponyms with this theme
+
+  entropy_show <-signif(entropy_value, digits = 4)
+  texto_title <- "Frequência dos diferentes topónimos"
+  subtitle_graph <- paste("Topónimos: ", num_vars, "  ", "Entidades geográficas: ",  freq_lex, "  ", "Entropia: ", entropy_show,  sep= "")
+  freqs_df <- data.frame(sort(table(list_toponimos_tema$toponimo), TRUE))
+
+  ggplot(freqs_df, aes(y = reorder(Var1, -Freq), x = Freq)) +
+    geom_bar(stat = "identity") +
+    labs(title = texto_title, subtitle = subtitle_graph,
+         x = "Frequência",
+         y = "Topónimos") +
+    theme_bw()
+
+}
+
